@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        textarea
+        {display: block;
+            width:60%;
+            height:200px;
+
+            font-size:20px;
+            
+        }
+        .timer
+        {
+      display:block;
+      position: relative;
+      left: 50%;
+        }
+               </style>
+              <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Tangerine">
+</head>
+<body>
+    <h1> welcome to type writing app</h1>
+    <h1> word : <span id="word"> </span></h1>
+    <h1> characters: <span id="charcters"> </span></h1>
+    <h1> speed: <span id="speed"> </span></h1>
+    <h1 class="timer"> timer: <span id="timer"> </span></h1>
+<textarea id="textArea" onkeyup="ak()"></textarea>
+    <!-- <script src="a2.js"></script> -->
+    <script>
+        let word=document.getElementById("word");
+let charcters=document.getElementById("charcters");
+let textArea=document.getElementById("textArea");
+let speed=document.getElementById("speed");
+let timer=document.getElementById("timer");
+// textArea.value="";
+count=0;
+// setInterval(()=>{count++;
+// speed.innerText=count; },1000)
+let time="";
+let mincount=0;
+let start=1;
+function ak()
+{
+    let s=textArea.value;
+    let sl=s.length;
+    sw=s.split(" ").length;
+    console.log(sl);
+    console.log("sw:",sw);
+    word.innerText=sw;
+    charcters.innerText=sl;
+    if(start)
+    {
+        setInterval(()=>{count++;
+            if(count<10)
+            {
+                time="0"+count+" sec";
+
+            }
+            else 
+            {
+                time=count+" sec";
+            }
+            timer.innerText=time;
+            let s=textArea.value;
+            let sl=s.length;
+        speed.innerText=Math.ceil(((sl/5)/count)*60)+" WPM";
+        console.log("s:",s);
+    console.log("count:",count);
+},1000);
+        start=0;
+    }
+}
+    </script>
+</body>
+</html>
